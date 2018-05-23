@@ -97,3 +97,8 @@ ENV/
 
 # mypy
 .mypy_cache/
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/pythogram.iml
+.idea/workspace.xml
