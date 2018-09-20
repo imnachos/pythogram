@@ -1,0 +1,36 @@
+from InstagramAPI import InstagramAPI
+from pythogram import settings as cfg, utilities as util
+import json
+
+api = InstagramAPI(cfg.USER, cfg.PASSWORD)
+
+if api.login():
+
+    print("Login succes!")
+
+    followers_json = util.getTotalFollowers(api, api.username_id)
+    following_json = util.getTotalFollowings(api, api.username_id)
+
+    followers_list = []
+    followings_list = []
+
+    for follower_user in followers_json:
+        username = follower_user.get('username')
+        followers_list = []
+
+    for following_user in following_json:
+        username = following_user.get('username')
+        followings_list.append(username)
+
+    not_following_back = list(set(followings_list) - set(followers_list))
+    not_following_them = list(set(followers_list) - set(followings_list))
+
+    print('Users that are not following back: ', not_following_back)
+    print('Users that you are not following: ', not_following_them)
+
+
+else:
+    print("Can't login!")
+
+
+

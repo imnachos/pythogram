@@ -102,3 +102,5 @@ ENV/
 .idea/vcs.xml
 .idea/pythogram.iml
 .idea/workspace.xml
+
+pythogram/settings.py
