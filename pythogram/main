@@ -8,8 +8,8 @@ if api.login():
 
     print("Login succes!")
 
-    followers_json = util.getTotalFollowers(api, api.username_id)
-    following_json = util.getTotalFollowings(api, api.username_id)
+    followers_json = util.get_total_followers(api, api.username_id)
+    following_json = util.get_total_followings(api, api.username_id)
 
     followers_list = []
     followings_list = []
