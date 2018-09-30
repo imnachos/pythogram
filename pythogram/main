@@ -16,7 +16,7 @@ if api.login():
 
     for follower_user in followers_json:
         username = follower_user.get('username')
-        followers_list = []
+        followers_list.append(username)
 
     for following_user in following_json:
         username = following_user.get('username')
