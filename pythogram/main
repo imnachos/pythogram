@@ -1,6 +1,5 @@
 from InstagramAPI import InstagramAPI
 from pythogram import settings as cfg, utilities as util
-import json
 
 api = InstagramAPI(cfg.USER, cfg.PASSWORD)
 

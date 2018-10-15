@@ -1,6 +1,8 @@
 # pythogram
 
-Sample project to demonstrate how to use Intagram's python API.
+Sample project to demonstrate how to use Instagram's python API.
+
+https://github.com/LevPasha/Instagram-API-python
 
 
 # Instructions
