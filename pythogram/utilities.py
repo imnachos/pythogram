@@ -1,4 +1,4 @@
-import json, pickle
+import pickle, os
 
 
 def save_last_session_cookies(session):
@@ -12,8 +12,18 @@ def save_follower_list(followers):
 
 
 def get_follower_list():
-    with open('followers.txt', 'rb') as f:
-        return pickle.load(f)
+
+    if not os.path.exists('followers.txt'):
+        f = open('followers.txt', 'w')
+        f.write('')
+        f.close()
+        try:
+            return pickle.load(open('followers.txt', 'rb'))
+        except EOFError:
+            return []
+    else:
+        with open('followers.txt', 'rb') as f:
+            return pickle.load(f)
 
 
 def save_following_list(following):
@@ -22,8 +32,17 @@ def save_following_list(following):
 
 
 def get_following_list():
-    with open('following.txt', 'rb') as f:
-        return pickle.load(f)
+    if not os.path.exists('following.txt'):
+        f = open('following.txt', 'w')
+        f.write('')
+        f.close()
+        try:
+            return pickle.load(open('following.txt', 'rb'))
+        except EOFError:
+            return []
+    else:
+        with open('following.txt', 'rb') as f:
+            return pickle.load(f)
 
 
 def get_last_session_cookies():
@@ -48,7 +67,7 @@ def get_total_followers(api, user_id):
         if next_max_id is True:
             next_max_id = ''
 
-        response = api.getUserFollowers(user_id, maxid=next_max_id)
+        api.getUserFollowers(user_id, maxid=next_max_id)
         followers.extend(api.LastJson.get('users', []))
         next_max_id = api.LastJson.get('next_max_id', '')
     return followers
@@ -66,7 +85,8 @@ def get_total_followings(api, user_id):
         if next_max_id is True:
             next_max_id = ''
 
-        response = api.getUserFollowings(user_id, maxid=next_max_id)
+        api.getUserFollowings(user_id, maxid=next_max_id)
         followings.extend(api.LastJson.get('users', []))
         next_max_id = api.LastJson.get('next_max_id', '')
     return followings
+
