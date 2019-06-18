@@ -104,3 +104,6 @@ ENV/
 .idea/workspace.xml
 
 pythogram/settings.py
+*.xml
+pythogram/.idea/pythogram.iml
+*.txt
