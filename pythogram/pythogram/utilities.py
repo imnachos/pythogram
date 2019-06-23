@@ -46,6 +46,8 @@ def get_following_list():
 
 
 def get_last_session_cookies():
+    if not os.path.exists('session'):
+        return None
     with open('session', 'rb') as f:
         return pickle.load(f)
 
